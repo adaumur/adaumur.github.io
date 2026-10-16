@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Départ pour Lyon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Caveat:wght@500;700&family=Gloock&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fond:#2B1810; --cacao:#1C0F09; --creme:#F3E3CC; --lait:#C9A88A; --ligne:rgba(243,227,204,.16);
+  --orange:#E8792B; --ocre:#E2A23B; --braise:#C9461C; --flamme:#FFC24B; --rouge:#D2454F; --papier:#EAD3B4; --encre:#3A2014;
+  --titre:"Gloock",Georgia,serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --main:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --fond:#22130C; --cacao:#160B06; } }
+:root[data-theme="dark"]{ --fond:#22130C; --cacao:#160B06; }
+html{ scroll-padding-top:env(safe-area-inset-top,0px); background:var(--fond); }
+*,*::before,*::after{ box-sizing:inherit; }
+body{ margin:0; background:var(--fond); color:var(--creme); font-family:var(--serif); font-size:1.125rem; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+svg{ max-width:100%; }
+
+/* Ouverture */
+.hero{ position:relative; overflow:hidden; min-height:92vh; min-height:92svh; display:flex; flex-direction:column; justify-content:center;
+       padding:2rem 1.25rem 3.5rem; background:radial-gradient(130% 60% at 50% 105%, rgba(232,121,43,.30), transparent 65%); }
+.hero-in{ position:relative; z-index:2; max-width:34rem; width:100%; margin:0 auto; }
+.chute{ position:absolute; inset:0; pointer-events:none; z-index:1; }
+.chute .tombe{ position:absolute; top:-50px; animation:tombe linear infinite; }
+.chute .tombe svg{ display:block; animation:balance ease-in-out infinite alternate; }
+@keyframes tombe{ to{ transform:translateY(110svh); } }
+@keyframes balance{ from{ transform:translateX(-18px) rotate(-35deg); } to{ transform:translateX(18px) rotate(40deg); } }
+.deco{ position:absolute; z-index:1; pointer-events:none; }
+.deco.d1{ width:150px; top:-38px; left:-46px; transform:rotate(-24deg); fill:var(--braise); opacity:.9; }
+.deco.d2{ width:96px; top:30px; left:70px; transform:rotate(18deg); fill:var(--ocre); opacity:.85; }
+.deco.d3{ width:170px; bottom:-56px; right:-50px; transform:rotate(150deg); fill:var(--orange); }
+.deco.d4{ width:84px; bottom:24px; right:96px; transform:rotate(-30deg); fill:var(--rouge); opacity:.8; }
+
+.tableau{ background:var(--cacao); border-radius:8px; padding:1rem 1rem 1.1rem; box-shadow:0 0 0 1px rgba(243,227,204,.08), 0 18px 40px -18px rgba(0,0,0,.7); }
+.ligne-dep{ display:grid; grid-template-columns:6.5rem 1fr; align-items:center; gap:.75rem; padding:.45rem 0; }
+.ligne-dep + .ligne-dep{ border-top:1px solid rgba(243,227,204,.07); }
+.ligne-dep .lib{ font-style:italic; font-size:.95rem; color:var(--lait); }
+.palettes{ font-family:var(--display); font-weight:800; color:var(--orange); font-size:1.9rem; line-height:1; white-space:nowrap; overflow:hidden; }
+.palettes.grand{ font-size:2.9rem; color:var(--ocre); }
+.f{ display:inline-block; width:.72em; text-align:center; margin-right:2px; padding:.08em 0;
+    background:linear-gradient(to bottom,#2E1A10 0 49%,#0E0704 49% 51%,#2E1A10 51% 100%); border-radius:2px; }
+.f.vide{ background:transparent; }
+
+h1{ font-family:var(--titre); font-weight:400; font-size:clamp(2.4rem,9vw,3.2rem); line-height:1.05; margin:2.2rem 0 .8rem; }
+h1 .coeur{ color:var(--rouge); }
+.intro{ color:var(--lait); margin:0 0 .6rem; max-width:30rem; }
+.compte{ font-family:var(--main); font-size:1.5rem; color:var(--ocre); margin:0; }
+
+/* Programme */
+main{ max-width:34rem; margin:0 auto; padding:1rem 1.25rem 4rem; }
+.jour{ display:flex; align-items:center; gap:.6rem; font-family:var(--titre); font-weight:400; font-size:2rem; margin:2.4rem 0 .6rem; }
+.jour svg{ width:26px; height:26px; fill:var(--orange); transform:rotate(-20deg); flex:none; }
+.etape{ display:grid; grid-template-columns:3.3rem 30px 1fr; gap:.8rem; padding:.2rem 0 1.4rem; }
+.etape .bougie{ background:linear-gradient(var(--ligne),var(--ligne)) center 46px / 2px calc(100% - 40px) no-repeat; display:flex; justify-content:center; }
+.etape:last-of-type .bougie{ background:none; }
+.heure{ font-family:var(--display); font-weight:600; font-size:1.4rem; line-height:1; padding-top:1.1rem; color:var(--ocre); text-align:right; }
+.etape h2{ font-family:var(--serif); font-size:1.3rem; font-weight:600; line-height:1.25; margin:.85rem 0 .15rem; }
+.lieu{ color:var(--lait); font-style:italic; font-size:1rem; margin:0 0 .45rem; }
+.etape p.txt{ margin:0 0 .6rem; }
+.secret{ display:inline-block; margin:.2rem 0 .8rem; padding:.55rem .9rem .5rem; background:var(--papier); color:var(--encre); transform:rotate(-1.5deg);
+         font-family:var(--display); font-weight:800; font-size:1.5rem; letter-spacing:.03em; border-radius:3px; }
+.secret small{ display:block; font-family:var(--main); font-weight:500; font-size:1.15rem; letter-spacing:0; color:var(--braise); }
+a.carte{ color:var(--orange); font-size:1rem; text-underline-offset:3px; }
+a.carte:focus-visible{ outline:2px solid var(--ocre); outline-offset:3px; }
+
+.scellee .corps{ margin-top:.5rem; border:1.5px dashed rgba(243,227,204,.25); border-radius:14px 4px 14px 4px; padding:.5rem 1rem .7rem; }
+.scellee h2{ font-family:var(--main); font-weight:700; font-size:1.8rem; color:var(--orange); margin:0; }
+.scellee .quand{ margin:0; font-size:1rem; color:var(--lait); }
+.scellee .reste{ margin:.1rem 0 0; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--creme); }
+.etape.scellee, .etape.revele{ -webkit-user-select:none; user-select:none; touch-action:manipulation; cursor:default; }
+.revele .corps{ outline:1px dashed var(--lait); outline-offset:6px; border-radius:2px; }
+
+.flamme{ transform-box:fill-box; transform-origin:50% 100%; animation:vacille 1.3s ease-in-out infinite alternate; }
+.halo{ animation:halo 1.3s ease-in-out infinite alternate; }
+@keyframes vacille{ 0%{ transform:scale(1,1) rotate(-3deg); } 50%{ transform:scale(.9,1.08) rotate(2deg); } 100%{ transform:scale(1.05,.95) rotate(-1deg); } }
+@keyframes halo{ from{ opacity:.35; } to{ opacity:.6; } }
+
+/* Mot final */
+.mot{ margin-top:3.5rem; text-align:center; }
+.tasse{ width:150px; margin:0 auto -6px; display:block; }
+.vapeur{ animation:vapeur 3.6s ease-in-out infinite; opacity:0; }
+.vapeur.v2{ animation-delay:1.2s; } .vapeur.v3{ animation-delay:2.4s; }
+@keyframes vapeur{ 0%{ opacity:0; transform:translateY(8px); } 40%{ opacity:.8; } 100%{ opacity:0; transform:translateY(-12px); } }
+.lettre{ position:relative; text-align:left; background:var(--papier); color:var(--encre); padding:1.6rem 1.4rem 1.4rem; border-radius:3px; transform:rotate(-1deg);
+         box-shadow:0 20px 40px -20px rgba(0,0,0,.8); }
+.lettre p{ font-family:var(--main); font-weight:500; font-size:1.55rem; line-height:1.35; white-space:pre-line; margin:0 0 1rem; }
+.lettre .sig{ display:block; text-align:right; font-family:var(--main); font-weight:700; font-size:2.1rem; color:var(--braise); }
+.lettre .feuille-coin{ position:absolute; width:58px; top:-24px; right:-12px; fill:var(--orange); transform:rotate(25deg); }
+.attente{ font-family:var(--main); font-size:1.6rem; color:var(--lait); margin:.5rem 0 0; }
+
+@media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; } .chute{ display:none; } .vapeur{ opacity:.6; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="erable" viewBox="0 0 100 100">
+      <path d="M50 2 L57 22 L70 13 L66 34 L88 27 L79 44 L97 52 L76 58 L83 75 L62 68 L56 85 L52 71 L52 99 L48 99 L48 71 L44 85 L38 68 L17 75 L24 58 L3 52 L21 44 L12 27 L34 34 L30 13 L43 22 Z"/>
+      <path d="M50 28 V96 M50 52 L27 37 M50 52 L73 37 M50 64 L28 61 M50 64 L72 61" fill="none" stroke="rgba(0,0,0,.22)" stroke-width="2"/>
+    </symbol>
+    <symbol id="feuille" viewBox="0 0 100 100">
+      <path d="M50 4 C82 26 84 70 50 96 C16 70 18 26 50 4Z"/>
+      <path d="M50 10 V95 M50 40 L34 28 M50 40 L66 28 M50 60 L32 48 M50 60 L68 48" fill="none" stroke="rgba(0,0,0,.2)" stroke-width="2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="hero">
+  <div class="chute" id="chute"></div>
+  <svg class="deco d1" viewBox="0 0 100 100" aria-hidden="true"><use href="#erable"/></svg>
+  <svg class="deco d2" viewBox="0 0 100 100" aria-hidden="true"><use href="#feuille"/></svg>
+  <svg class="deco d3" viewBox="0 0 100 100" aria-hidden="true"><use href="#erable"/></svg>
+  <svg class="deco d4" viewBox="0 0 100 100" aria-hidden="true"><use href="#feuille"/></svg>
+  <div class="hero-in">
+    <div class="tableau" aria-label="Tableau des départs">
+      <div class="ligne-dep"><span class="lib">Départ</span><span class="palettes" id="p-heure"></span></div>
+      <div class="ligne-dep"><span class="lib">Destination</span><span class="palettes grand" id="p-dest"></span></div>
+      <div class="ligne-dep"><span class="lib">Placement</span><span class="palettes" id="p-voiture"></span></div>
+    </div>
+    <h1 id="titre"></h1>
+    <p class="intro">Tu sais maintenant où on va. Pour le reste, chaque étape s'allume le moment venu. Garde la page sous la main.</p>
+    <p class="compte" id="compte"></p>
+  </div>
+</header>
+
+<main>
+  <section id="programme" aria-live="polite"></section>
+  <section class="mot" id="mot"></section>
+</main>
+
+<script>
+/* ============ À REMPLIR ============
+   Dates au format AAAA-MM-JJTHH:MM (heure de Paris).
+   "ouvre" : moment où l'étape se dévoile. Sans "ouvre", elle s'ouvre 15 min avant "quand".
+   Astuce : ajoute ?apercu à la fin de l'adresse pour tout voir sans attendre. */
+const WEEKEND = {
+  apercu: false, // Mettre true pour tout voir pendant les tests.
+  prenom: "Solenne",
+  signature: "Chachou",
+  voiture: "LIBRE",
+  etapes: [
+    { quand:"2026-10-17T09:11", ouvre:"2000-01-01T00:00",
+      titre:"Train pour Lyon", lieu:"Gare de Riom",
+      texte:"Placement libre, on choisit nos places. Arrivée à Lyon Part-Dieu à 11 h 26." },
+    { quand:"2026-10-17T11:45",
+      titre:"Les Halles de Lyon Paul Bocuse", lieu:"Halles de Lyon Paul Bocuse", carte:true,
+      texte:"À dix minutes à pied de la gare. On fait le tour des étals et on déjeune sur place." },
+    { quand:"2026-10-17T14:00",
+      titre:"Greet Hôtel", lieu:"Greet Hôtel, 26 cours de Verdun Perrache", carte:true,
+      texte:"On dépose les valises et on repart." },
+    { quand:"2026-10-17T15:00",
+      titre:"Le parc de la Tête d'Or", lieu:"Parc de la Tête d'Or", carte:true,
+      texte:"Les allées, le lac et les grands arbres, en plein automne." },
+    { quand:"2026-10-17T16:45",
+      titre:"Les berges du Rhône", lieu:"Berges du Rhône", carte:true,
+      texte:"On descend le long du fleuve à pied, sous les arbres dorés, en direction de la Presqu'île." },
+    { quand:"2026-10-17T17:45",
+      titre:"Une pause chocolat chaud", lieu:"Diggers, 6 rue Neuve", carte:true,
+      texte:"Un bar à chocolat où l'on choisit l'origine de son cacao. De quoi se réchauffer les mains avant le coucher de soleil." },
+    { quand:"2026-10-17T18:40",
+      titre:"Le soleil se couche sur la Saône", lieu:"Passerelle du Palais de Justice", carte:true,
+      texte:"On s'arrête au milieu de la passerelle, Fourvière en face, et on regarde le ciel." },
+    { quand:"2026-10-17T19:00",
+      titre:"Un bar clandestin", lieu:"12 rue du Bœuf, Vieux Lyon", carte:true,
+      texte:"Le bar de Bon-Secours. Pour entrer, il faut le mot de passe.",
+      secret:"Le Clandé Bar" },
+    { quand:"2026-10-17T20:00",
+      titre:"Le Bœuf d'Argent", lieu:"29 rue du Bœuf, Vieux Lyon", carte:true,
+      texte:"La table de Viviana Pisacane, gagnante de Top Chef cette année. Même rue, quelques numéros plus loin." },
+    { quand:"2026-10-18T10:30",
+      titre:"Marché Saint-Antoine", lieu:"Quai Saint-Antoine", carte:true,
+      texte:"Le marché le long de la Saône, pour flâner sans se presser." },
+    { quand:"2026-10-18T11:50",
+      titre:"On déjeune", lieu:"Starsmash, 10 rue Palais Grillet", carte:true,
+      texte:"Rendez-vous chez Starsmash." },
+    { quand:"2026-10-18T13:20",
+      titre:"Lyon à pied", lieu:"Place des Terreaux", carte:true,
+      texte:"On part à 13 h 20. Les Terreaux, l'Opéra, les Cordeliers et le Grand Hôtel-Dieu. Puis on passe la Saône vers la cathédrale Saint-Jean et les traboules du Vieux Lyon." },
+    { quand:"2026-10-18T15:50",
+      titre:"Un goûter lyonnais", lieu:"Vieux Lyon",
+      texte:"Une part de tarte aux pralines, la spécialité rose de Lyon, pour finir la balade en douceur." },
+    { quand:"2026-10-18T16:20",
+      titre:"Retour à la maison", lieu:"Lyon Part-Dieu",
+      texte:"On file vers la gare à 16 h 20. Train à 17 h 34, arrivée à Riom à 19 h 49." }
+  ],
+  mot: { ouvre:"2026-10-18T17:40",
+         texte:"Mon petit chat,\n\nVoilà, le week-end touche à sa fin. J'espère que tu as aimé chaque étape, du quai de Riom jusqu'aux traboules du Vieux Lyon. Te voir découvrir tout ça au fur et à mesure, c'était mon cadeau à moi.\n\nJe voulais un week-end qui te ressemble. L'automne, un coucher de soleil sur la Saône, un bon dîner rien que pour nous deux.\n\nJe suis tellement heureux de fêter tes 25 ans à tes côtés. Et j'ai bien l'intention de fêter tous les suivants avec toi.\n\nJe t'aime de tout mon cœur." }
+};
+/* =================================== */
+
+const apercu = WEEKEND.apercu || new URLSearchParams(location.search).has("apercu");
+const reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const d = s => new Date(s);
+const ouverture = e => e.ouvre ? d(e.ouvre) : new Date(d(e.quand).getTime() - 900000);
+const estOuvert = (date, now) => apercu || now >= date;
+const hhmm = dt => dt.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+const jourDe = dt => { const j = dt.toLocaleDateString("fr-FR",{weekday:"long"}); return j.charAt(0).toUpperCase()+j.slice(1); };
+function el(tag, cls, txt){ const n=document.createElement(tag); if(cls) n.className=cls; if(txt!=null) n.textContent=txt; return n; }
+
+/* Illustrations fixes (aucune donnée utilisateur dedans) */
+const CORPS_BOUGIE = '<line x1="15" y1="21" x2="15" y2="25" stroke="#1C0F09" stroke-width="1.6"/><rect x="8" y="25" width="14" height="25" rx="2" fill="#F3E3CC"/><path d="M8 28 q3.5 4 7 0 q3.5 4 7 0" fill="none" stroke="#DCC4A5" stroke-width="1.3"/>';
+const ALLUMEE = '<svg viewBox="0 0 30 52" width="30" height="52" aria-hidden="true"><circle class="halo" cx="15" cy="13" r="12" fill="#E8792B" opacity=".45"/><g class="flamme"><path d="M15 3 C20 10 21 15 15 21 C9 15 10 10 15 3Z" fill="#FFC24B"/><path d="M15 9 C17.5 13 17.5 15.5 15 18.5 C12.5 15.5 12.5 13 15 9Z" fill="#FFF1C9"/></g>' + CORPS_BOUGIE + '</svg>';
+const ETEINTE = '<svg viewBox="0 0 30 52" width="30" height="52" aria-hidden="true"><path d="M15 21 c-4 -4 4 -7 0 -11 c-3 -3 2 -6 1 -8" fill="none" stroke="#C9A88A" stroke-width="1.2" opacity=".5"/>' + CORPS_BOUGIE.replace('#F3E3CC','#8A6A52') + '</svg>';
+const TASSE = '<svg class="tasse" viewBox="0 0 150 130" aria-hidden="true">'
+ + '<g fill="none" stroke="#C9A88A" stroke-width="3" stroke-linecap="round"><path class="vapeur" d="M58 44 c-9 -9 9 -15 0 -26"/><path class="vapeur v2" d="M75 40 c-9 -9 9 -15 0 -26"/><path class="vapeur v3" d="M92 44 c-9 -9 9 -15 0 -26"/></g>'
+ + '<path d="M118 62 a17 17 0 0 1 0 34" fill="none" stroke="#E8792B" stroke-width="9"/>'
+ + '<path d="M32 52 h86 v44 a24 24 0 0 1 -24 24 h-38 a24 24 0 0 1 -24 -24Z" fill="#E8792B"/>'
+ + '<ellipse cx="75" cy="52" rx="43" ry="7" fill="#C9461C"/><ellipse cx="75" cy="53" rx="38" ry="5" fill="#5A2E1B"/>'
+ + '<svg x="58" y="70" width="34" height="34" viewBox="0 0 100 100" fill="#F3E3CC" opacity=".9"><use href="#erable"/></svg></svg>';
+
+function chute(){
+  if (reduit) return;
+  const zone = document.getElementById("chute");
+  const couleurs = ["#E8792B","#E2A23B","#C9461C","#D2454F","#B8611F"];
+  for (let i=0;i<11;i++){
+    const w = document.createElement("div"); w.className = "tombe";
+    const taille = 14 + Math.random()*20;
+    w.style.left = (Math.random()*100) + "%";
+    w.style.animationDuration = (10 + Math.random()*9) + "s";
+    w.style.animationDelay = (-Math.random()*18) + "s";
+    w.innerHTML = '<svg viewBox="0 0 100 100" width="'+taille.toFixed(0)+'" height="'+taille.toFixed(0)+'" fill="'+couleurs[i%couleurs.length]+'"><use href="#'+(i%3?"erable":"feuille")+'"/></svg>';
+    w.firstChild.style.animationDuration = (2 + Math.random()*2) + "s";
+    w.style.opacity = (.55 + Math.random()*.45).toFixed(2);
+    zone.appendChild(w);
+  }
+}
+
+function restant(ms){
+  const m = Math.ceil(ms/60000);
+  if (m < 60) return `dans ${m} min`;
+  const h = Math.floor(m/60), j = Math.floor(h/24);
+  if (j >= 1) return `dans ${j} j ${h%24} h`;
+  return `dans ${h} h ${String(m%60).padStart(2,"0")}`;
+}
+
+function palettes(id, texte, retard){
+  const zone = document.getElementById(id);
+  const jeu = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  zone.setAttribute("aria-label", texte);
+  [...texte].forEach((c,i)=>{
+    const s = el("span", c===" " ? "f vide" : "f", c===" " ? "\u00a0" : c);
+    s.setAttribute("aria-hidden","true");
+    zone.appendChild(s);
+    if (reduit || c===" ") return;
+    let n = 0; const fin = 10 + i*4 + retard;
+    const t = setInterval(()=>{
+      if (++n >= fin){ s.textContent = c; clearInterval(t); return; }
+      s.textContent = jeu[Math.random()*jeu.length|0];
+    }, 55);
+  });
+}
+
+const reveles = new Set();
+const feuilleJour = () => '<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#erable"/></svg>';
+
+function rendre(){
+  const now = new Date();
+  const prog = document.getElementById("programme");
+  prog.replaceChildren();
+  let jourCourant = "", ouvertes = 0;
+
+  WEEKEND.etapes.forEach((e,i)=>{
+    const q = d(e.quand), o = ouverture(e), ouvertReel = estOuvert(o, now);
+    const ok = ouvertReel || reveles.has(i);
+    if (ouvertReel) ouvertes++;
+    const j = jourDe(q);
+    if (j !== jourCourant){
+      const h = el("h3","jour"); h.innerHTML = feuilleJour(); h.appendChild(document.createTextNode(j));
+      prog.appendChild(h); jourCourant = j;
+    }
+
+    const art = el("article", ouvertReel ? "etape" : (ok ? "etape revele" : "etape scellee"));
+    if (!ouvertReel){
+      let n = 0, t;
+      art.addEventListener("click", ()=>{
+        n++; clearTimeout(t); t = setTimeout(()=>{ n = 0; }, 600);
+        if (n === 3){ n = 0; reveles.has(i) ? reveles.delete(i) : reveles.add(i); rendre(); }
+      });
+    }
+    art.appendChild(el("div","heure", ok ? hhmm(q) : "··:··"));
+    const b = el("div","bougie"); b.innerHTML = ok ? ALLUMEE : ETEINTE; art.appendChild(b);
+    const corps = el("div","corps");
+
+    if (ok){
+      corps.appendChild(el("h2",null,e.titre));
+      corps.appendChild(el("p","lieu",e.lieu));
+      corps.appendChild(el("p","txt",e.texte));
+      if (e.secret){
+        const s = el("div","secret"); s.appendChild(el("small",null,"Le mot de passe"));
+        s.appendChild(document.createTextNode(e.secret)); corps.appendChild(s);
+      }
+      if (e.carte){
+        const a = el("a","carte","Ouvrir dans Plans");
+        a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(e.lieu + ", Lyon");
+        a.target = "_blank"; a.rel = "noopener";
+        corps.appendChild(document.createElement("div")).appendChild(a);
+      }
+    } else {
+      corps.appendChild(el("h2",null,"Surprise"));
+      corps.appendChild(el("p","quand",`S'allume ${jourDe(o).toLowerCase()} à ${hhmm(o)}`));
+      corps.appendChild(el("p","reste",restant(o-now)));
+    }
+    art.appendChild(corps);
+    prog.appendChild(art);
+  });
+
+  const total = WEEKEND.etapes.length;
+  document.getElementById("compte").textContent =
+    ouvertes === total ? "Toutes les bougies sont allumées." : `${ouvertes} bougie${ouvertes>1?"s":""} allumée${ouvertes>1?"s":""} sur ${total}`;
+
+  const mot = document.getElementById("mot");
+  mot.replaceChildren();
+  mot.insertAdjacentHTML("beforeend", TASSE);
+  if (estOuvert(d(WEEKEND.mot.ouvre), now)){
+    const l = el("div","lettre");
+    l.insertAdjacentHTML("beforeend",'<svg class="feuille-coin" viewBox="0 0 100 100" aria-hidden="true"><use href="#erable"/></svg>');
+    l.appendChild(el("p",null,WEEKEND.mot.texte));
+    l.appendChild(el("span","sig",WEEKEND.signature));
+    mot.appendChild(l);
+  } else {
+    mot.appendChild(el("p","attente","Un dernier mot t'attend à la fin du week-end."));
+  }
+}
+
+const premier = d(WEEKEND.etapes[0].quand);
+const titre = document.getElementById("titre");
+titre.textContent = "Joyeux 25 ans mon petit chat ";
+const coeur = el("span", "coeur", "\u2665");
+coeur.setAttribute("aria-label", "cœur");
+titre.appendChild(coeur);
+palettes("p-heure", hhmm(premier), 0);
+palettes("p-dest", "LYON", 8);
+palettes("p-voiture", WEEKEND.voiture, 20);
+chute();
+rendre();
+setInterval(rendre, 30000);
+</script>
+</body>
+</html>
